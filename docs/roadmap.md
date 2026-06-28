@@ -19,10 +19,10 @@ Momentum is being developed in iterative sprints.
 # Phase 2 — Core Backend
 
 ## Sprint 2
-- [ ] User Entity
-- [ ] User Repository
-- [ ] Service Layer
-- [ ] Create User API
+- [x] User Entity
+- [x] User Repository
+- [x] Service Layer
+- [x] Create User API
 
 ## Sprint 3
 - [ ] Habit Entity
