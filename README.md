@@ -199,13 +199,15 @@ Momentum
 
 ## 🚧 Phase 2 — Core Backend
 
-* ✅ User Module
-* ✅ CRUD Operations
-* ✅ DTO Pattern
-* ✅ Bean Validation
-* ✅ Global Exception Handling
-* 🚧 Authentication
-* 🚧 JWT Security
+- ✅ User Module
+- ✅ CRUD Operations
+- ✅ DTO Architecture
+- ✅ Request Validation
+- ✅ Global Exception Handling
+- ✅ BCrypt Password Encryption
+- 🚧 Authentication
+- 🚧 JWT Security
+- Habit Module
 
 ---
 
@@ -360,7 +362,8 @@ Documentation is available inside the **docs** directory.
 | Sprint 0 | ✅ Completed    |
 | Sprint 1 | ✅ Completed    |
 | Sprint 2 | ✅ Completed    |
-| Sprint 3 | 🚧 In Progress |
+| Sprint 3 | ✅ Completed    |
+| Sprint 4 | 🚧 In Progress |
 
 ---
 
