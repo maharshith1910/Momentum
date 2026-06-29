@@ -4,6 +4,7 @@ import com.maharshith.backend.repository.UserRepository;
 import com.maharshith.backend.entity.User;
 import org.springframework.stereotype.Service;
 import com.maharshith.backend.dto.*;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.LocalDateTime;
 import java.util.*;
@@ -11,8 +12,10 @@ import java.util.*;
 @Service
 public class UserService {
     private final UserRepository userRepository;
-    public UserService(UserRepository userRepository){
+    private final PasswordEncoder passwordEncoder;
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder){
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public UserResponseDTO createUser(UserRequestDTO userRequestDTO) {
@@ -21,7 +24,7 @@ public class UserService {
 
         user.setUsername(userRequestDTO.getUsername());
         user.setEmail(userRequestDTO.getEmail());
-        user.setPassword(userRequestDTO.getPassword());
+        user.setPassword(passwordEncoder.encode(userRequestDTO.getPassword()));
         user.setCreatedAt(LocalDateTime.now());
 
         User savedUser = userRepository.save(user);
