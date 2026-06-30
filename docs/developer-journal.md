@@ -406,3 +406,195 @@ Planned work includes:
 - 🚧 JWT Security
 - ⏳ Habit Module
 - ⏳ Frontend Development
+
+
+# Sprint 4 - JWT Authentication
+
+## Objective
+
+Implement JWT-based authentication to transform Momentum from a CRUD backend into a secure authentication server.
+
+---
+
+## Completed
+
+### Authentication Architecture
+
+- Created Authentication package
+- Created LoginRequestDTO
+- Created LoginResponseDTO
+- Implemented AuthenticationService
+- Implemented AuthenticationServiceImpl
+
+### Spring Security
+
+- Implemented CustomUserDetails
+- Implemented CustomUserDetailsService
+- Configured DaoAuthenticationProvider
+- Configured AuthenticationManager
+- Updated SecurityConfig
+
+### JWT
+
+- Integrated JJWT library
+- Created JwtService
+- Generated signed JWT tokens
+- Configured token expiration
+- Implemented email extraction from JWT
+
+### Authentication API
+
+Implemented:
+
+- POST `/api/auth/login`
+
+Successfully authenticated users using BCrypt password verification and returned signed JWT tokens.
+
+---
+
+## Challenges Faced
+
+### Maven Dependency Issues
+
+**Problem**
+
+JWT dependencies could not be resolved.
+
+Errors included:
+
+```text
+Dependency not found
+```
+
+and
+
+```text
+dependencies.dependency.version is missing
+```
+
+**Cause**
+
+Incorrect Spring Boot starter dependencies were included in `pom.xml`, preventing Maven from resolving the project correctly.
+
+**Solution**
+
+- Replaced invalid Spring Boot starters with the correct dependencies.
+- Cleaned the Maven configuration.
+- Successfully rebuilt the project.
+
+---
+
+### Maven Not Recognized
+
+**Problem**
+
+```text
+mvn is not recognized as an internal or external command
+```
+
+**Cause**
+
+Maven was not added to the system PATH.
+
+**Solution**
+
+Used the Maven Wrapper included with the project and verified the build using:
+
+```bash
+mvnw.cmd clean install
+```
+
+---
+
+### HTTP 403 During Login
+
+**Problem**
+
+The Login endpoint returned HTTP 403 Forbidden.
+
+**Cause**
+
+An incorrect login request was sent while debugging.
+
+**Solution**
+
+Verified the request body and endpoint.
+
+Authentication completed successfully after correcting the credentials.
+
+---
+
+## Milestone Achieved
+
+🎉 Momentum successfully generated its first JWT token.
+
+Example response:
+
+```json
+{
+    "token": "eyJhbGciOiJIUzI1NiJ9..."
+}
+```
+
+This marks the transition from a traditional CRUD backend to a secure authentication backend.
+
+---
+
+## Lessons Learned
+
+- Spring Security Authentication Flow
+- AuthenticationManager
+- DaoAuthenticationProvider
+- UserDetailsService
+- BCrypt Authentication
+- JWT Fundamentals
+- Token Generation
+- Stateless Authentication
+- Maven Dependency Management
+- Debugging Spring Security Configuration
+
+---
+
+## Sprint Summary
+
+Sprint 4 introduced secure user authentication using JSON Web Tokens (JWT).
+
+Users can now authenticate using their email and password, which are verified against BCrypt-hashed passwords stored in PostgreSQL. Upon successful authentication, the backend generates a signed JWT that will be used to authorize future protected API requests.
+
+This sprint establishes the core authentication system required for securing the remaining application modules.
+
+---
+
+## Next Sprint
+
+Sprint 5 will complete the authentication pipeline.
+
+Planned work includes:
+
+- JWT Authentication Filter
+- Token Validation
+- SecurityContext Integration
+- Protected APIs
+- Current User Endpoint
+- Authorization Rules
+
+---
+
+## Project Status after Sprint 4
+
+- ✅ Environment Setup
+- ✅ Spring Boot Backend
+- ✅ PostgreSQL Integration
+- ✅ User Module
+- ✅ CRUD APIs
+- ✅ DTO Architecture
+- ✅ Request Validation
+- ✅ Global Exception Handling
+- ✅ BCrypt Password Encryption
+- ✅ JWT Authentication
+- ✅ Login API
+- ✅ First JWT Generated
+- 🚧 JWT Filter
+- 🚧 Protected APIs
+- ⏳ Habit Module
+- ⏳ React Frontend
