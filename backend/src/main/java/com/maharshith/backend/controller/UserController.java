@@ -50,4 +50,8 @@ public class UserController {
     public void deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
     }
+    @GetMapping("/hello")
+    public String hello() {
+        return "JWT Authentication Successful!";
+    }
 }
