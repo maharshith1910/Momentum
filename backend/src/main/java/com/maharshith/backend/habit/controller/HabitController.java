@@ -27,7 +27,7 @@ public class HabitController {
             @Valid @RequestBody CreateHabitRequest request,
             @AuthenticationPrincipal CustomUserDetails userDetails
     ) {
-
+        System.out.println("Hiii");
         User user = userDetails.getUser();
 
         return habitService.createHabit(request, user);

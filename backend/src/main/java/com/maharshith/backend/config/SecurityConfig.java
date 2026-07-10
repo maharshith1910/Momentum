@@ -40,14 +40,14 @@ public class SecurityConfig {
                         UsernamePasswordAuthenticationFilter.class
                 )
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**")
-                        .permitAll()
-                        .anyRequest()
-                        .authenticated()
+                        .requestMatchers("/api/auth/**","/error").permitAll()
+                        .requestMatchers("/api/habits/**").authenticated()
+                        .anyRequest().authenticated()
                 );
 
+
         return http.build();
-    }
+    }   
 
     @Bean
     public PasswordEncoder passwordEncoder() {

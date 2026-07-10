@@ -39,6 +39,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         String authHeader = request.getHeader("Authorization");
 
+        System.out.println("Authorization Header: " + authHeader);
+
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             filterChain.doFilter(request, response);
             return;
@@ -49,6 +51,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         try {
             username = jwtService.extractUsername(jwt);
+            System.out.println("Username from token: " + username);
         } catch (Exception e) {
             // Invalid or malformed token - skip authentication and continue
             filterChain.doFilter(request, response);
@@ -61,6 +64,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 UserDetails userDetails = customUserDetailsService.loadUserByUsername(username);
 
                 if (jwtService.isTokenValid(jwt, userDetails)) {
+                    System.out.println("TOKEN VALID");
 
                     UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
                             userDetails,
@@ -71,7 +75,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                     authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
                     SecurityContextHolder.getContext().setAuthentication(authentication);
-                }
+
+                    System.out.println("AUTHENTICATION SET");                }
             } catch (Exception e) {
                 // Error loading user or validating token - proceed without authentication
             }
