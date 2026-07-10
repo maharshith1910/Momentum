@@ -1,4 +1,7 @@
 # 🚀 Momentum
+Build today.
+
+Become tomorrow.
 
 > **Build habits. Build consistency. Build Momentum.**
 
@@ -10,10 +13,27 @@ This project is being developed as a **production-ready software engineering por
 
 ## 🚧 Current Status
 
-**Sprint 2 Completed ✅**
+### Sprint 4 — Authentication & Security (95% Complete)
 
-Currently working on **Sprint 3 — Authentication & JWT Security**
+✅ User Module
 
+✅ CRUD APIs
+
+✅ Validation
+
+✅ Global Exception Handling
+
+✅ BCrypt Password Encryption
+
+✅ JWT Authentication
+
+✅ Login Endpoint
+
+✅ JWT Filter
+
+✅ Protected Routes
+
+✅ Current User API
 ---
 
 ## 📖 Table of Contents
@@ -198,7 +218,6 @@ Momentum
 ---
 
 ## 🚧 Phase 2 — Core Backend
-
 - ✅ User Module
 - ✅ CRUD Operations
 - ✅ DTO Architecture
@@ -363,7 +382,9 @@ Documentation is available inside the **docs** directory.
 | Sprint 1 | ✅ Completed    |
 | Sprint 2 | ✅ Completed    |
 | Sprint 3 | ✅ Completed    |
-| Sprint 4 | 🚧 In Progress |
+| Sprint 4 | ✅ Completed    |
+| Sprint 5 | ✅ Completed    |
+| Sprint 6 | 🚧 In Progress |
 
 ---
 

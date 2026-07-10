@@ -598,3 +598,42 @@ Planned work includes:
 - 🚧 Protected APIs
 - ⏳ Habit Module
 - ⏳ React Frontend
+
+
+# Sprint 5
+
+## Goal
+
+Implement authenticated Habit Management.
+
+## Completed
+
+- Habit Entity
+- Repository
+- DTOs
+- Service Layer
+- Controller
+- JWT-protected APIs
+
+Implemented endpoints:
+
+POST /api/habits
+GET /api/habits
+GET /api/habits/{id}
+PUT /api/habits/{id}
+DELETE /api/habits/{id}
+
+## Major Challenges
+
+- JWT returned 403 for authenticated requests.
+- Root cause:
+  Missing getUser() method inside CustomUserDetails.
+
+- PostgreSQL schema mismatch caused Hibernate issues.
+- Resolved by cleaning old table structure and allowing Hibernate to recreate the schema.
+
+## Lessons Learned
+
+- Always verify JWT Authentication before debugging controllers.
+- Validate entity mappings before assuming Security issues.
+- Test every endpoint using Postman before committing.

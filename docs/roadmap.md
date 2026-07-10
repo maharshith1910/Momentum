@@ -1,105 +1,208 @@
 # 🗺️ Momentum Roadmap
 
-Momentum is being developed in iterative sprints.
+Momentum is being built as a production-ready full-stack application with a one-month MVP target, followed by continuous feature development throughout 2026.
 
 ---
 
 # Phase 1 — Foundation ✅
 
 ## Sprint 0
-- [x] Environment Setup
-
-## Sprint 1
-- [x] Spring Boot Backend
-- [x] PostgreSQL Integration
-- [x] Health API
+- [x] Development Environment Setup
+- [x] Git Configuration
+- [x] Java 21
+- [x] Maven
+- [x] PostgreSQL
+- [x] Docker
+- [x] IntelliJ
+- [x] VS Code
+- [x] Postman
 
 ---
 
-# Phase 2 — Core Backend
+## Sprint 1
+- [x] Spring Boot Initialization
+- [x] PostgreSQL Integration
+- [x] Health Check API
+- [x] Project Structure
+
+---
+
+# Phase 2 — Backend Core ✅
 
 ## Sprint 2
 - [x] User Entity
-- [x] User Repository
+- [x] Repository Layer
 - [x] Service Layer
-- [x] Create User API
-
-## Sprint 3
-- [ ] Habit Entity
-- [ ] Habit CRUD
-- [ ] Validation
-
-## Sprint 4
-- [ ] Habit Completion
-- [ ] Daily Logs
-- [ ] Streak Calculation
-
-## Sprint 5
-- [ ] Authentication (JWT)
-- [ ] Login
-- [ ] Registration
-- [ ] Password Encryption
+- [x] Controller Layer
+- [x] CRUD APIs
+- [x] DTO Architecture
+- [x] Validation
+- [x] Global Exception Handling
+- [x] ResponseEntity
 
 ---
 
-# Phase 3 — Frontend
+# Phase 2 — Security
 
-## Sprint 6
+## Sprint 3 ✅
+- [x] Spring Security Setup
+- [x] BCrypt Password Encryption
+- [x] CustomUserDetails
+- [x] CustomUserDetailsService
+- [x] AuthenticationManager
+- [x] Authentication Architecture
+
+---
+
+## Sprint 4 ✅
+
+- [x] JWT Service
+- [x] Login API
+- [x] JWT Generation
+- [x] First JWT Generated 🎉
+
+Remaining
+
+- [ ] JWT Authentication Filter
+- [ ] JWT Validation
+- [ ] Protected APIs
+- [ ] Current User Endpoint
+- [ ] Authorization Rules
+
+---
+
+# Phase 4 — Habit Management
+
+
+
+## Sprint 5 — Habit Management ✅
+
+- [x] Habit Entity
+- [x] Habit Repository
+- [x] Service Layer
+- [x] Controller
+- [x] Create Habit
+- [x] Get All Habits
+- [x] Get Habit
+- [x] Update Habit
+- [x] Delete Habit
+
+---
+
+## Sprint 6 🚧 (Current)
+
+- [ ] Streak Engine
+- [ ] Progress Calculation
+- [ ] Habit Statistics
+- [ ] Dashboard APIs
+
+---
+
+# Phase 5 — Frontend
+
+## Sprint 7
+
 - [ ] React Setup
+- [ ] TypeScript
 - [ ] TailwindCSS
 - [ ] Routing
 
-## Sprint 7
-- [ ] Login UI
-- [ ] Registration UI
+---
 
 ## Sprint 8
+
+- [ ] Authentication Pages
 - [ ] Dashboard
+- [ ] Layout
+- [ ] Navigation
+
+---
 
 ## Sprint 9
-- [ ] Habit Management
+
+- [ ] Habit Management UI
+- [ ] Progress UI
+- [ ] Statistics
+- [ ] Responsive Design
 
 ---
 
-# Phase 4 — Advanced Features
+# Phase 6 — MVP Deployment 🎯
 
 ## Sprint 10
+
+- [ ] Docker
+- [ ] Production Configuration
+- [ ] Deployment
+- [ ] Domain
+- [ ] Public Release (v1.0)
+
+---
+
+# Phase 7 — Post-v1 Roadmap (2026)
+
+## Version 1.1
+
+- [ ] Achievement System
+- [ ] GitHub-style Heatmap
+- [ ] Weekly Reports
 - [ ] Analytics
 
-## Sprint 11
-- [ ] Calendar View
+---
 
-## Sprint 12
-- [ ] GitHub-style Heatmap
+## Version 1.2
 
-## Sprint 13
-- [ ] Achievement System
-
-## Sprint 14
-- [ ] Weekly Reports
+- [ ] Momentum Pulse
+- [ ] Momentum Classic
+- [ ] Dynamic Themes
+- [ ] Focus Mode
 
 ---
 
-# Phase 5 — Production
+## Version 1.3
 
-## Sprint 15
-- [ ] Docker
-
-## Sprint 16
-- [ ] Deployment
-
-## Sprint 17
-- [ ] CI/CD
-
-## Sprint 18
-- [ ] API Documentation (Swagger)
+- [ ] AI Coach
+- [ ] Smart Habit Insights
+- [ ] Personalized Suggestions
 
 ---
 
-# Stretch Goals
+## Version 1.4
 
-- AI Habit Insights
-- Email Reminders
-- Progressive Web App (PWA)
-- Social Features
-- Mobile App
+- [ ] Mountain Journey
+- [ ] Identity-Based Progress
+- [ ] Life Compass
+- [ ] Memory Timeline
+- [ ] Annual Review
+
+---
+
+## Version 1.5
+
+- [ ] Future Letters
+- [ ] Community Mountain
+- [ ] Lifetime Journey
+- [ ] Journey Export
+
+---
+
+# Long-Term Vision
+
+- [ ] Mobile Application
+- [ ] Progressive Web App (PWA)
+- [ ] Offline Mode
+- [ ] OAuth Login
+- [ ] Team Challenges
+- [ ] Habit Sharing
+- [ ] Wearable Integrations
+- [ ] Public API
+
+---
+
+# Engineering Principles
+
+- Ship first. Cook later.
+- Production-ready over tutorial code.
+- Clean architecture over shortcuts.
+- Document every sprint.
+- Build features users remember.
