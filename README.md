@@ -10,30 +10,23 @@ Momentum is a modern full-stack habit tracking platform designed to help users b
 This project is being developed as a **production-ready software engineering portfolio project**, following industry-standard architecture, clean code principles, Git workflow, testing, documentation, and deployment practices.
 
 ---
+## 🚀 Current Status
 
-## 🚧 Current Status
+### Sprint 5 — Habit Management ✅ COMPLETED
 
-### Sprint 4 — Authentication & Security (95% Complete)
-
-✅ User Module
-
-✅ CRUD APIs
-
-✅ Validation
-
-✅ Global Exception Handling
-
-✅ BCrypt Password Encryption
-
-✅ JWT Authentication
-
-✅ Login Endpoint
-
-✅ JWT Filter
-
-✅ Protected Routes
-
-✅ Current User API
+- ✅ User Registration
+- ✅ Secure Login (JWT)
+- ✅ BCrypt Password Encryption
+- ✅ JWT Authentication & Authorization
+- ✅ Protected API Routes
+- ✅ Habit Management Module
+  - ✅ Create Habit
+  - ✅ View All Habits
+  - ✅ View Habit by ID
+  - ✅ Update Habit
+  - ✅ Delete Habit
+- ✅ PostgreSQL Integration
+- ✅ End-to-End API Testing (Postman)
 ---
 
 ## 📖 Table of Contents
