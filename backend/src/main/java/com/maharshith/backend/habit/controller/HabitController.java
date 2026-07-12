@@ -2,14 +2,20 @@ package com.maharshith.backend.habit.controller;
 
 import com.maharshith.backend.auth.security.CustomUserDetails;
 import com.maharshith.backend.entity.User;
+import com.maharshith.backend.habit.dto.CompleteHabitResponse;
 import com.maharshith.backend.habit.dto.CreateHabitRequest;
 import com.maharshith.backend.habit.dto.HabitResponse;
 import com.maharshith.backend.habit.dto.UpdateHabitRequest;
 import com.maharshith.backend.habit.service.HabitService;
 import jakarta.validation.Valid;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+
+import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import java.util.List;
 
 @RestController
@@ -75,5 +81,18 @@ public class HabitController {
         User user = userDetails.getUser();
 
         habitService.deleteHabit(id, user);
+    }
+    @PatchMapping("/{id}/complete")
+    public ResponseEntity<CompleteHabitResponse> completeHabit(
+            @PathVariable Long id,
+            @AuthenticationPrincipal CustomUserDetails userDetails
+    ) {
+
+        User user = userDetails.getUser();
+
+        CompleteHabitResponse response =
+                habitService.completeHabit(id, user);
+
+        return ResponseEntity.ok(response);
     }
 }

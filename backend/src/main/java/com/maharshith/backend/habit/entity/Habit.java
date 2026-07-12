@@ -2,8 +2,8 @@ package com.maharshith.backend.habit.entity;
 
 import com.maharshith.backend.entity.User;
 import jakarta.persistence.*;
+import java.time.LocalDate;
 
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "habits")
@@ -23,11 +23,22 @@ public class Habit {
     private boolean completed = false;
 
     @Column(nullable = false)
-    private LocalDateTime createdAt;
+    private Integer streak = 0;
+
+    @Column(nullable = false)
+    private Integer longestStreak = 0;
+
+    private LocalDate lastCompletedDate;
+
+    @Column(nullable = false)
+    private LocalDate createdAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
+
+    // ===== Constructors =====
 
     public Habit() {
     }
@@ -37,17 +48,44 @@ public class Habit {
         this.description = description;
         this.user = user;
         this.completed = false;
-        this.createdAt = LocalDateTime.now();
+        this.createdAt = LocalDate.now();
+        this.streak  = 0;
+        this.longestStreak = 0;
+        this.lastCompletedDate = null;
+
     }
 
     @PrePersist
     public void prePersist() {
         if (createdAt == null) {
-            createdAt = LocalDateTime.now();
+            createdAt = LocalDate.now();
         }
     }
 
     // ===== Getters & Setters =====
+    public void setStreak(Integer streak) {
+        this.streak = streak;
+    }
+
+    public void setLongestStreak(Integer longestStreak) {
+        this.longestStreak = longestStreak;
+    }
+
+    public void setLastCompletedDate(LocalDate lastCompletedDate) {
+        this.lastCompletedDate = lastCompletedDate;
+    }
+
+    public Integer getLongestStreak() {
+        return longestStreak;
+    }
+
+    public Integer getStreak() {
+        return streak;
+    }
+
+    public LocalDate getLastCompletedDate() {
+        return lastCompletedDate;
+    }
 
     public Long getId() {
         return id;
@@ -81,11 +119,11 @@ public class Habit {
         this.completed = completed;
     }
 
-    public LocalDateTime getCreatedAt() {
+    public LocalDate getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
+    public void setCreatedAt(LocalDate createdAt) {
         this.createdAt = createdAt;
     }
 

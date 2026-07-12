@@ -1,6 +1,7 @@
 package com.maharshith.backend.habit.service;
 
 import com.maharshith.backend.entity.User;
+import com.maharshith.backend.habit.dto.CompleteHabitResponse;
 import com.maharshith.backend.habit.dto.CreateHabitRequest;
 import com.maharshith.backend.habit.dto.HabitResponse;
 import com.maharshith.backend.habit.dto.UpdateHabitRequest;
@@ -16,5 +17,5 @@ public interface HabitService{
     HabitResponse updateHabit(Long id, UpdateHabitRequest request, User user);
 
     void deleteHabit(Long id, User user);
-
+    CompleteHabitResponse completeHabit(Long id, User user);
 }

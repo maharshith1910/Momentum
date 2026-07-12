@@ -2,41 +2,38 @@ package com.maharshith.backend.habit.dto;
 
 import java.time.LocalDate;
 
-public class HabitResponse {
+public class CompleteHabitResponse {
 
     private Long id;
-
     private String name;
-
-    private String description;
-
     private boolean completed;
 
     private Integer streak;
-
     private Integer longestStreak;
 
     private LocalDate lastCompletedDate;
 
-    public HabitResponse() {
+    private String message;
+
+    public CompleteHabitResponse() {
     }
 
-    public HabitResponse(
+    public CompleteHabitResponse(
             Long id,
             String name,
-            String description,
             boolean completed,
             Integer streak,
             Integer longestStreak,
-            LocalDate lastCompletedDate
+            LocalDate lastCompletedDate,
+            String message
     ) {
         this.id = id;
         this.name = name;
-        this.description = description;
         this.completed = completed;
         this.streak = streak;
         this.longestStreak = longestStreak;
         this.lastCompletedDate = lastCompletedDate;
+        this.message = message;
     }
 
     public Long getId() {
@@ -53,14 +50,6 @@ public class HabitResponse {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public boolean isCompleted() {
@@ -93,5 +82,13 @@ public class HabitResponse {
 
     public void setLastCompletedDate(LocalDate lastCompletedDate) {
         this.lastCompletedDate = lastCompletedDate;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }
