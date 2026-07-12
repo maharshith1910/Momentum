@@ -600,40 +600,245 @@ Planned work includes:
 - ⏳ React Frontend
 
 
-# Sprint 5
+# Sprint 5 - Habit Module
 
-## Goal
+## Objective
 
-Implement authenticated Habit Management.
+Implement a complete Habit Management module with JWT-protected CRUD operations.
+
+---
 
 ## Completed
 
-- Habit Entity
-- Repository
-- DTOs
-- Service Layer
-- Controller
-- JWT-protected APIs
+### Habit Architecture
 
-Implemented endpoints:
+- Created Habit Entity
+- Created Habit Repository
+- Created Habit Service
+- Created Habit Controller
+- Linked Habit with User using Many-to-One relationship
 
-POST /api/habits
-GET /api/habits
-GET /api/habits/{id}
-PUT /api/habits/{id}
-DELETE /api/habits/{id}
+### CRUD APIs
 
-## Major Challenges
+Implemented:
 
-- JWT returned 403 for authenticated requests.
-- Root cause:
-  Missing getUser() method inside CustomUserDetails.
+- POST `/api/habits`
+- GET `/api/habits`
+- GET `/api/habits/{id}`
+- PUT `/api/habits/{id}`
+- DELETE `/api/habits/{id}`
 
-- PostgreSQL schema mismatch caused Hibernate issues.
-- Resolved by cleaning old table structure and allowing Hibernate to recreate the schema.
+### DTOs
+
+Implemented:
+
+- CreateHabitRequest
+- UpdateHabitRequest
+- HabitResponse
+
+### Security
+
+All Habit APIs are protected using JWT Authentication.
+
+Only authenticated users can access their own habits.
+
+---
+
+## Challenges Faced
+
+### JWT returned HTTP 403
+
+**Problem**
+
+Authenticated requests were returning HTTP 403 Forbidden.
+
+**Cause**
+
+`CustomUserDetails` did not expose the logged-in User object.
+
+**Solution**
+
+Added:
+
+```java
+public User getUser()
+```
+
+inside `CustomUserDetails`.
+
+---
+
+### Hibernate Table Issues
+
+**Problem**
+
+Hibernate could not map the Habit entity correctly.
+
+**Cause**
+
+Existing PostgreSQL table schema did not match the entity.
+
+**Solution**
+
+Dropped the old table and allowed Hibernate to recreate it using:
+
+```properties
+spring.jpa.hibernate.ddl-auto=update
+```
+
+---
 
 ## Lessons Learned
 
-- Always verify JWT Authentication before debugging controllers.
-- Validate entity mappings before assuming Security issues.
-- Test every endpoint using Postman before committing.
+- Entity Relationships
+- Many-to-One Mapping
+- DTO Pattern
+- Repository Design
+- JWT Protected APIs
+- Ownership Validation
+- RESTful CRUD Design
+
+---
+
+## Sprint Summary
+
+Sprint 5 introduced the complete Habit Management module. Every habit is securely linked to its owner, all CRUD endpoints are JWT protected, and users can only access their own data.
+
+---
+
+# Sprint 6 - Streak Engine & Dashboard
+
+## Objective
+
+Implement automatic streak tracking, dashboard analytics, and scheduled daily habit reset.
+
+---
+
+## Completed
+
+### Streak Engine
+
+Implemented Habit Completion Logic:
+
+- First-time completion
+- Already completed today detection
+- Consecutive-day streak increment
+- Missed-day streak reset
+- Longest streak tracking
+
+Created:
+
+- CompleteHabitResponse
+
+Endpoint:
+
+PATCH `/api/habits/{id}/complete`
+
+---
+
+### Dashboard Module
+
+Created:
+
+- DashboardResponse
+- DashboardService
+- DashboardServiceImpl
+- DashboardController
+
+Endpoint:
+
+GET `/api/dashboard`
+
+Returns:
+
+- Total Habits
+- Completed Habits
+- Current Streak
+- Longest Streak
+- Completion Percentage
+
+---
+
+### Habit Reset Scheduler
+
+Created:
+
+HabitResetScheduler
+
+Runs every midnight using:
+
+```cron
+0 0 0 * * *
+```
+
+Automatically resets:
+
+```java
+completed = false
+```
+
+for all habits.
+
+---
+
+### Security
+
+Protected:
+
+- `/api/habits/**`
+- `/api/dashboard/**`
+
+using JWT Authentication.
+
+---
+
+## Challenges Faced
+
+### Wrong HTTP Method
+
+Initially tested:
+
+```text
+POST /api/habits/complete
+```
+
+Result:
+
+```text
+405 Method Not Allowed
+```
+
+Solution:
+
+Used the correct endpoint:
+
+```text
+PATCH /api/habits/{id}/complete
+```
+
+---
+
+### Invalid JWT
+
+Some requests returned Unauthorized because an expired or incorrect Bearer Token was used.
+
+Solution:
+
+Generated a fresh JWT using the Login API and verified all protected endpoints.
+
+---
+
+## Lessons Learned
+
+- PATCH vs PUT
+- LocalDate-based streak calculations
+- Scheduled Tasks using @Scheduled
+- Dashboard aggregation using Java Streams
+- Building analytics APIs
+- Business logic implementation in the Service layer
+
+---
+
+## Sprint Summary
+
+Sprint 6 transformed Momentum into a true habit tracking platform by introducing automatic streak management, dashboard analytics, and scheduled daily habit resets. Users can now visualize their progress and maintain streaks while the system automatically handles daily reset behavior.

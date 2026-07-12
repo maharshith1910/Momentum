@@ -377,7 +377,9 @@ Documentation is available inside the **docs** directory.
 | Sprint 3 | ✅ Completed    |
 | Sprint 4 | ✅ Completed    |
 | Sprint 5 | ✅ Completed    |
-| Sprint 6 | 🚧 In Progress |
+| Sprint 5 | ✅ Completed    |
+| Sprint 7 | 🚧 In Progress |
+
 
 ---
 
