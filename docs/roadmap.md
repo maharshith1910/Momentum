@@ -1,25 +1,25 @@
 # 🗺️ Momentum Roadmap
 
-Momentum is being built as a production-ready full-stack application with a one-month MVP target, followed by continuous feature development throughout 2026.
+Momentum is being built as a production-ready full-stack habit tracking platform with a robust Spring Boot backend, followed by a modern React frontend and continuous feature expansion.
 
 ---
 
 # Phase 1 — Foundation ✅
 
-## Sprint 0
+## Sprint 0 — Environment Setup
 - [x] Development Environment Setup
 - [x] Git Configuration
 - [x] Java 21
 - [x] Maven
 - [x] PostgreSQL
 - [x] Docker
-- [x] IntelliJ
+- [x] IntelliJ IDEA
 - [x] VS Code
 - [x] Postman
 
 ---
 
-## Sprint 1
+## Sprint 1 — Backend Initialization
 - [x] Spring Boot Initialization
 - [x] PostgreSQL Integration
 - [x] Health Check API
@@ -29,7 +29,7 @@ Momentum is being built as a production-ready full-stack application with a one-
 
 # Phase 2 — Backend Core ✅
 
-## Sprint 2
+## Sprint 2 — User Module
 - [x] User Entity
 - [x] Repository Layer
 - [x] Service Layer
@@ -42,9 +42,7 @@ Momentum is being built as a production-ready full-stack application with a one-
 
 ---
 
-# Phase 2 — Security
-
-## Sprint 3 ✅
+## Sprint 3 — Security Foundation
 - [x] Spring Security Setup
 - [x] BCrypt Password Encryption
 - [x] CustomUserDetails
@@ -54,74 +52,123 @@ Momentum is being built as a production-ready full-stack application with a one-
 
 ---
 
-## Sprint 4 ✅
-
+## Sprint 4 — JWT Authentication
 - [x] JWT Service
-- [x] Login API
 - [x] JWT Generation
-- [x] First JWT Generated 🎉
-
-Remaining
-
-- [ ] JWT Authentication Filter
-- [ ] JWT Validation
-- [ ] Protected APIs
-- [ ] Current User Endpoint
-- [ ] Authorization Rules
+- [x] JWT Validation
+- [x] JWT Authentication Filter
+- [x] Login API
+- [x] Protected APIs
+- [x] Current User Endpoint
+- [x] Authorization Rules
 
 ---
 
-# Phase 4 — Habit Management
+# Phase 3 — Habit Management ✅
 
-
-
-## Sprint 5 — Habit Management ✅
-
+## Sprint 5 — Habit CRUD
 - [x] Habit Entity
 - [x] Habit Repository
-- [x] Service Layer
-- [x] Controller
+- [x] Habit Service
+- [x] Habit Controller
 - [x] Create Habit
-- [x] Get All Habits
 - [x] Get Habit
+- [x] Get All Habits
 - [x] Update Habit
 - [x] Delete Habit
 
 ---
 
-## Sprint 6 ✅ Completed
-
-### Habit Completion System
+## Sprint 6 — Streak Engine & Dashboard
 - [x] Complete Habit API
-- [x] Daily completion validation
-- [x] Prevent duplicate completion
-- [x] Consecutive streak tracking
-- [x] Automatic streak reset after missed days
-- [x] Longest streak tracking
-
-### Dashboard Analytics
-- [x] Total Habits
-- [x] Completed Habits
+- [x] Daily Completion Validation
+- [x] Duplicate Completion Prevention
 - [x] Current Streak
 - [x] Longest Streak
+- [x] Automatic Streak Reset
+- [x] Dashboard APIs
 - [x] Completion Percentage
+- [x] Midnight Reset Scheduler
 
-### Automation
-- [x] Midnight Habit Reset Scheduler
-- [x] Daily completion reset
-- [x] Scheduled task logging
-
-### Security
-- [x] JWT Protected Dashboard API
-- [x] Authenticated Habit Completion API
-
-Sprint Status: ✅ Completed
 ---
 
-# Phase 5 — Frontend
+## Sprint 7 — Habit History
+- [x] HabitCompletion Entity
+- [x] HabitCompletion Repository
+- [x] Completion History APIs
+- [x] Historical Completion Tracking
+- [x] Streak Persistence
 
-## Sprint 7
+---
 
+## Sprint 8 — Analytics Module
+- [x] Analytics Service
+- [x] Weekly Analytics
+- [x] Monthly Analytics
+- [x] Overall Analytics
+- [x] Analytics DTOs
+- [x] Analytics APIs
+
+---
+
+## Sprint 9 — Reminder Engine
+- [x] Reminder Entity
+- [x] Reminder Repository
+- [x] Reminder Service
+- [x] Reminder Controller
+- [x] Reminder CRUD APIs
+- [x] One Reminder Per Habit Validation
+- [x] Spring Scheduler
+- [x] Automatic Reminder Trigger
+- [x] Console Notification Engine
+
+---
+
+# Phase 4 — Backend Completion 🚧
+
+## Sprint 10 — Achievement System
+- [ ] Achievement Entity
+- [ ] Badge Entity
+- [ ] XP System
+- [ ] Level System
+- [ ] Achievement Unlock Engine
+- [ ] Achievement APIs
+
+---
+
+## Sprint 11 — Reports & Export
+- [ ] CSV Export
+- [ ] PDF Reports
+- [ ] Weekly Reports
+- [ ] Monthly Reports
+- [ ] Progress Reports
+
+---
+
+## Sprint 12 — Search & Productivity
+- [ ] Habit Search
+- [ ] Habit Filters
+- [ ] Sorting
+- [ ] Pagination
+- [ ] Archive Habits
+- [ ] Restore Habits
+
+---
+
+## Sprint 13 — Production Ready Backend
+- [ ] Swagger / OpenAPI
+- [ ] Docker Compose
+- [ ] Unit Testing
+- [ ] Integration Testing
+- [ ] Logging
+- [ ] API Documentation
+- [ ] Performance Optimization
+
+---
+
+# Phase 5 — Frontend 🚀
+
+## Sprint 14
 - [ ] React Setup
 - [ ] TypeScript
 - [ ] TailwindCSS
@@ -129,93 +176,67 @@ Sprint Status: ✅ Completed
 
 ---
 
-## Sprint 8
-
+## Sprint 15
 - [ ] Authentication Pages
 - [ ] Dashboard
-- [ ] Layout
+- [ ] Sidebar
 - [ ] Navigation
 
 ---
 
-## Sprint 9
-
+## Sprint 16
 - [ ] Habit Management UI
-- [ ] Progress UI
-- [ ] Statistics
-- [ ] Responsive Design
+- [ ] Analytics UI
+- [ ] Reminder UI
+- [ ] Achievement UI
 
 ---
 
-# Phase 6 — MVP Deployment 🎯
+## Sprint 17
+- [ ] Responsive Design
+- [ ] Dark Mode
+- [ ] Animations
+- [ ] Loading States
+- [ ] Error Pages
 
-## Sprint 10
+---
 
-- [ ] Docker
+# Phase 6 — MVP Release 🎯
+
+## Sprint 18
+- [ ] Docker Deployment
 - [ ] Production Configuration
-- [ ] Deployment
 - [ ] Domain
 - [ ] Public Release (v1.0)
 
 ---
 
-# Phase 7 — Post-v1 Roadmap (2026)
+# Future Versions
 
 ## Version 1.1
-
-- [ ] Achievement System
-- [ ] GitHub-style Heatmap
-- [ ] Weekly Reports
-- [ ] Analytics
-
----
-
-## Version 1.2
-
-- [ ] Momentum Pulse
-- [ ] Momentum Classic
-- [ ] Dynamic Themes
-- [ ] Focus Mode
-
----
-
-## Version 1.3
-
 - [ ] AI Coach
 - [ ] Smart Habit Insights
 - [ ] Personalized Suggestions
 
----
+## Version 1.2
+- [ ] GitHub Heatmap
+- [ ] Focus Mode
+- [ ] Dynamic Themes
+
+## Version 1.3
+- [ ] Mobile App
+- [ ] Progressive Web App
+- [ ] Offline Mode
 
 ## Version 1.4
-
-- [ ] Mountain Journey
-- [ ] Identity-Based Progress
-- [ ] Life Compass
-- [ ] Memory Timeline
-- [ ] Annual Review
-
----
+- [ ] Team Challenges
+- [ ] Community
+- [ ] Habit Sharing
 
 ## Version 1.5
-
-- [ ] Future Letters
-- [ ] Community Mountain
-- [ ] Lifetime Journey
-- [ ] Journey Export
-
----
-
-# Long-Term Vision
-
-- [ ] Mobile Application
-- [ ] Progressive Web App (PWA)
-- [ ] Offline Mode
-- [ ] OAuth Login
-- [ ] Team Challenges
-- [ ] Habit Sharing
 - [ ] Wearable Integrations
 - [ ] Public API
+- [ ] Lifetime Journey
 
 ---
 

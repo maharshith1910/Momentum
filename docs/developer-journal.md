@@ -842,3 +842,141 @@ Generated a fresh JWT using the Login API and verified all protected endpoints.
 ## Sprint Summary
 
 Sprint 6 transformed Momentum into a true habit tracking platform by introducing automatic streak management, dashboard analytics, and scheduled daily habit resets. Users can now visualize their progress and maintain streaks while the system automatically handles daily reset behavior.
+
+
+---
+
+Sprint 9 - Reminder & Notification Engine
+Objective
+
+Implement an automated reminder system that allows users to schedule notifications for their habits and execute reminder events using Spring Scheduler.
+
+Completed
+Reminder Module
+Created Reminder Entity
+Created Reminder Repository
+Created Reminder Service
+Created Reminder Controller
+Created Reminder DTOs
+Linked reminders with Habits
+Linked reminders with Users
+Reminder APIs
+
+Implemented:
+
+POST /api/reminders
+GET /api/reminders
+PUT /api/reminders/{id}
+DELETE /api/reminders/{id}
+Reminder Validation
+
+Implemented business validation including:
+
+One reminder per habit
+Ownership verification
+JWT-protected reminder endpoints
+Scheduler
+
+Implemented Spring Scheduler using:
+
+@Scheduled(cron = "0 * * * * *")
+
+The scheduler checks enabled reminders every minute and triggers notifications for matching reminder times.
+
+Notification Engine
+
+Successfully executed reminder events by printing scheduled notifications to the application console.
+
+Example:
+
+=======================================
+🔔 REMINDER
+User : Bruce1
+Habit: Gym
+Time : 22:48
+=======================================
+Challenges Faced
+Habit Lookup Failure
+
+Problem
+
+Creating reminders returned:
+
+Habit not found
+
+Cause
+
+Reminder requests referenced invalid habit IDs or habits that did not belong to the authenticated user.
+
+Solution
+
+Verified ownership using:
+
+habitRepository.findByIdAndUser(...)
+
+and ensured reminder requests used valid habit IDs.
+
+Scheduler Verification
+
+Initially no reminder output appeared.
+
+Solution
+
+Verified:
+
+@EnableScheduling
+ReminderScheduler registration
+Reminder time formatting
+Reminder persistence
+Cron execution
+
+Successfully confirmed scheduled reminder execution.
+
+Lessons Learned
+Spring Scheduler
+Cron Expressions
+Background Tasks
+Entity Relationships
+Business Validation
+Reminder Scheduling
+JWT Protected Modules
+Service Layer Design
+Scheduled Task Debugging
+Sprint Summary
+
+Sprint 9 introduced the Reminder & Notification Engine.
+
+Users can now create reminders for individual habits, securely manage them through authenticated APIs, and receive scheduled notifications executed automatically by Spring Scheduler.
+
+This completes the reminder subsystem and brings Momentum closer to production-ready functionality.
+
+Next Sprint
+
+Sprint 10 will implement:
+
+Achievement Engine
+Badge System
+Milestone Tracking
+XP / Level Progression
+Project Status after Sprint 9
+✅ Environment Setup
+✅ Spring Boot Backend
+✅ PostgreSQL Integration
+✅ User Module
+✅ CRUD APIs
+✅ DTO Architecture
+✅ Validation
+✅ Exception Handling
+✅ BCrypt Security
+✅ JWT Authentication
+✅ Protected APIs
+✅ Habit Management
+✅ Habit Completion History
+✅ Streak Engine
+✅ Analytics Dashboard
+✅ Reminder Engine
+🚧 Achievement System
+🚧 Badge System
+⏳ Frontend
+---
+

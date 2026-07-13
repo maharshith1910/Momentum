@@ -11,7 +11,7 @@ import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
-
+import com.maharshith.backend.habit.dto.HabitCompletionResponse;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -48,7 +48,15 @@ public class HabitController {
 
         return habitService.getAllHabits(user);
     }
+    @GetMapping("/history")
+    public List<HabitCompletionResponse> getCompletionHistory(
+            @AuthenticationPrincipal CustomUserDetails userDetails
+    ) {
 
+        User user = userDetails.getUser();
+
+        return habitService.getCompletionHistory(user);
+    }
     @GetMapping("/{id}")
     public HabitResponse getHabitById(
             @PathVariable Long id,

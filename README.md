@@ -367,18 +367,19 @@ Documentation is available inside the **docs** directory.
 
 ---
 
-# 🚧 Current Progress
+## Sprint Progress
 
-| Sprint   | Status         |
-| -------- | -------------- |
-| Sprint 0 | ✅ Completed    |
-| Sprint 1 | ✅ Completed    |
-| Sprint 2 | ✅ Completed    |
-| Sprint 3 | ✅ Completed    |
-| Sprint 4 | ✅ Completed    |
-| Sprint 5 | ✅ Completed    |
-| Sprint 5 | ✅ Completed    |
-| Sprint 7 | 🚧 In Progress |
+- ✅ Sprint 0 – Environment Setup
+- ✅ Sprint 1 – Backend Initialization
+- ✅ Sprint 2 – User Module
+- ✅ Sprint 3 – Application Security Foundation
+- ✅ Sprint 4 – JWT Authentication
+- ✅ Sprint 5 – JWT Authorization & Protected APIs
+- ✅ Sprint 6 – Habit Management Module
+- ✅ Sprint 7 – Streak Engine & Habit Completion History
+- ✅ Sprint 8 – Analytics Module
+- ✅ Sprint 9 – Reminder & Notification Engine
+- 🚧 Sprint 10 – Achievement & Badge System
 
 
 ---
