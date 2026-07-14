@@ -61,5 +61,23 @@ public class User {
     private String email;
     private String password;
     private LocalDateTime createdAt;
+    private int xp = 0;
 
+    private int level = 1;
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public void setXp(int xp) {
+        this.xp = xp;
+    }
+
+    public int getXp() {
+        return xp;
+    }
+
+    public int getLevel() {
+        return level;
+    }
 }

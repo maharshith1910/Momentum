@@ -45,7 +45,8 @@ public class SecurityConfig {
                                 "/api/habits/**",
                                 "/api/dashboard/**",
                                 "/api/analytics/**",
-                                "/api/reminders/**"
+                                "/api/reminders/**",
+                                "/api/achievements/**"
                         ).authenticated()
                         .anyRequest().authenticated()
                 );

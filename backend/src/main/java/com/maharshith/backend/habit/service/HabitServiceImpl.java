@@ -13,19 +13,22 @@ import com.maharshith.backend.habit.dto.HabitCompletionResponse;
 import com.maharshith.backend.habit.entity.HabitCompletion;
 import java.time.LocalDate;
 import java.util.List;
-
+import com.maharshith.backend.achievement.service.AchievementService;
 @Service
 public class HabitServiceImpl implements HabitService {
 
     private final HabitRepository habitRepository;
     private final HabitCompletionRepository habitCompletionRepository;
+    private final AchievementService achievementService;
 
     public HabitServiceImpl(
             HabitRepository habitRepository,
-            HabitCompletionRepository habitCompletionRepository
+            HabitCompletionRepository habitCompletionRepository,
+            AchievementService achievementService
     ) {
         this.habitRepository = habitRepository;
         this.habitCompletionRepository = habitCompletionRepository;
+        this.achievementService = achievementService;
     }
 
     @Override
@@ -98,7 +101,7 @@ public class HabitServiceImpl implements HabitService {
 
         LocalDate today = LocalDate.now();
 
-        // First time completion
+        // First completion
         if (habit.getLastCompletedDate() == null) {
 
             habit.setCompleted(true);
@@ -108,13 +111,12 @@ public class HabitServiceImpl implements HabitService {
 
             habitRepository.save(habit);
 
-            HabitCompletion completion = new HabitCompletion(
-                    habit,
-                    user,
-                    today
-            );
+            HabitCompletion completion =
+                    new HabitCompletion(habit, user, today);
 
             habitCompletionRepository.save(completion);
+
+            achievementService.checkAchievements(user);
 
             return new CompleteHabitResponse(
                     habit.getId(),
@@ -155,13 +157,12 @@ public class HabitServiceImpl implements HabitService {
 
             habitRepository.save(habit);
 
-            HabitCompletion completion = new HabitCompletion(
-                    habit,
-                    user,
-                    today
-            );
+            HabitCompletion completion =
+                    new HabitCompletion(habit, user, today);
 
             habitCompletionRepository.save(completion);
+
+            achievementService.checkAchievements(user);
 
             return new CompleteHabitResponse(
                     habit.getId(),
@@ -174,22 +175,19 @@ public class HabitServiceImpl implements HabitService {
             );
         }
 
-        // Missed one or more days -> Restart streak
+        // Restart streak
         habit.setCompleted(true);
         habit.setStreak(1);
         habit.setLastCompletedDate(today);
 
-        // Longest streak remains unchanged
-
         habitRepository.save(habit);
 
-        HabitCompletion completion = new HabitCompletion(
-                habit,
-                user,
-                today
-        );
+        HabitCompletion completion =
+                new HabitCompletion(habit, user, today);
 
         habitCompletionRepository.save(completion);
+
+        achievementService.checkAchievements(user);
 
         return new CompleteHabitResponse(
                 habit.getId(),
