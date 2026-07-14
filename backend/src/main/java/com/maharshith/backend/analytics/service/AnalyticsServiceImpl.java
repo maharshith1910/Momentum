@@ -9,6 +9,8 @@ import com.maharshith.backend.habit.entity.HabitCompletion;
 import com.maharshith.backend.habit.repository.HabitCompletionRepository;
 import com.maharshith.backend.habit.repository.HabitRepository;
 import org.springframework.stereotype.Service;
+import com.maharshith.backend.analytics.dto.AnalyticsSummaryResponse;
+import com.maharshith.backend.analytics.dto.HabitInsightResponse;
 
 import java.time.LocalDate;
 import java.time.YearMonth;
@@ -137,5 +139,82 @@ public class AnalyticsServiceImpl implements AnalyticsService {
         }
 
         return response;
+    }
+    @Override
+    public HabitInsightResponse getHabitInsights(User user) {
+
+        List<Habit> habits = habitRepository.findByUser(user);
+
+        List<HabitCompletion> completions =
+                habitCompletionRepository.findByUser(user);
+
+        String bestHabit = "N/A";
+        String worstHabit = "N/A";
+        String mostConsistentHabit = "N/A";
+
+        if (!habits.isEmpty()) {
+
+            Habit best = habits.stream()
+                    .max((a, b) -> Integer.compare(a.getLongestStreak(), b.getLongestStreak()))
+                    .orElse(null);
+
+            Habit worst = habits.stream()
+                    .min((a, b) -> Integer.compare(a.getLongestStreak(), b.getLongestStreak()))
+                    .orElse(null);
+
+            Habit consistent = habits.stream()
+                    .max((a, b) -> Integer.compare(a.getStreak(), b.getStreak()))
+                    .orElse(null);
+
+            if (best != null)
+                bestHabit = best.getName();
+
+            if (worst != null)
+                worstHabit = worst.getName();
+
+            if (consistent != null)
+                mostConsistentHabit = consistent.getName();
+        }
+
+        double averagePerDay =
+                completions.size() / 365.0;
+
+        String quote;
+
+        if (averagePerDay >= 5) {
+            quote = "Consistency creates champions.";
+        } else if (averagePerDay >= 2) {
+            quote = "Every day counts.";
+        } else {
+            quote = "Start small. Stay consistent.";
+        }
+
+        return new HabitInsightResponse(
+                bestHabit,
+                worstHabit,
+                mostConsistentHabit,
+                averagePerDay,
+                quote
+        );
+    }
+    @Override
+    public AnalyticsSummaryResponse getSummary(User user) {
+
+        AnalyticsResponse analytics = getAnalytics(user);
+
+        HabitInsightResponse insights =
+                getHabitInsights(user);
+
+        return new AnalyticsSummaryResponse(
+                analytics.getTotalCompletions(),
+                analytics.getCurrentStreak(),
+                analytics.getLongestStreak(),
+                analytics.getSuccessRate(),
+                insights.getBestHabit(),
+                insights.getWorstHabit(),
+                insights.getMostConsistentHabit(),
+                insights.getAveragePerDay(),
+                insights.getMotivationalQuote()
+        );
     }
 }

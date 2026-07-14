@@ -10,6 +10,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.maharshith.backend.analytics.dto.AnalyticsSummaryResponse;
 
 import java.util.List;
 
@@ -51,5 +52,13 @@ public class AnalyticsController {
         User user = userDetails.getUser();
 
         return analyticsService.getMonthlyAnalytics(user);
+    }
+    @GetMapping("/summary")
+    public AnalyticsSummaryResponse getSummary(
+            @AuthenticationPrincipal CustomUserDetails userDetails
+    ) {
+        return analyticsService.getSummary(
+                userDetails.getUser()
+        );
     }
 }
