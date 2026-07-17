@@ -1,9 +1,31 @@
+import PageTitle from "../../components/common/PageTitle";
+import StreakCard from "./StreakCard.tsx";
+import TodayHabitsCard from "./TodayHabitsCard.tsx";
+import WeeklyProgressCard from "./WeeklyProgressCard.tsx";
+import QuickStatsCard from "./QuickStatsCard.tsx";
+import CompletionCard from "./CompletionCard.tsx";
+
 export default function Dashboard() {
     return (
-        <div className="min-h-screen bg-red-500 flex items-center justify-center">
-            <h1 className="text-white text-6xl font-bold">
-                DASHBOARD
-            </h1>
-        </div>
+        <>
+            <PageTitle
+                title="Dashboard"
+                subtitle="Track your progress every day."
+            />
+
+            <div className="grid grid-cols-3 gap-6">
+
+                <StreakCard />
+
+                <TodayHabitsCard />
+
+                <CompletionCard />
+
+                <WeeklyProgressCard />
+
+                <QuickStatsCard />
+
+            </div>
+        </>
     );
 }
